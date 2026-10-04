@@ -1,5 +1,6 @@
 import { getCurrentUser } from "@/lib/auth-helpers";
 import { SettingsForm } from "@/components/forms/settings-form";
+import { Button } from "@/components/ui/button";
 
 export default async function SettingsPage() {
   const user = await getCurrentUser();
@@ -21,6 +22,13 @@ export default async function SettingsPage() {
           }}
         />
       </div>
+
+      <form action="/api/account/delete" method="post" className="mt-12">
+        <h2 className="text-muted-foreground mb-4 text-sm">Your data</h2>
+        <Button type="submit" variant="destructive">
+          Delete my data
+        </Button>
+      </form>
 
       {user.organization && (
         <div className="mt-12">
